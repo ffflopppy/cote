@@ -1,13 +1,42 @@
 package org.example;
 
-import java.util.Arrays;
+import java.sql.SQLOutput;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Solution {
 
-    public int solution2(int[] priorities, int location) {
-        int answer = 0;
+
+
+    public String solution3(String[] participant, String[] completion) {
+
+        // todo :: 동명이인가능
+        String answer = "";
+        Set<String> winnerSet = new HashSet<>(Arrays.asList(completion));
+
+        for (String player :participant) {
+            if (!winnerSet.contains(player)) return player;
+        }
         return answer;
     }
+    public int solution2(int[] priorities, int location) {
+        int answer = 1;
+        PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());
+        for (int p : priorities){
+            pq.offer(p);
+            System.out.println(pq);
+        }
+
+        while (!pq.isEmpty()){
+            for (int i = 0; i < priorities.length; i++) {
+                if (priorities[i] == location) return answer;
+            }
+            pq.poll();
+            answer++;
+        }
+        return answer;
+    }
+
     public int[] solution1(String s) {
 
         int[] answer = {0,0};
@@ -23,13 +52,9 @@ public class Solution {
 
             // make num to binary
             while (countOne > 1){
-
-                Long remainder = countOne%2; //remainder
                 countOne = countOne/2; // quotient
-                binary = remainder + binary;
-                if (countOne == 1 | countOne == 0) {
-                    binary = countOne + binary;
-                }
+                binary = countOne%2 + binary; // remainder
+                if (countOne == 1 | countOne == 0) binary = countOne + binary;
             }
 
             keepGo = Arrays.stream(binary.split("")).count() > 1;
@@ -43,7 +68,6 @@ public class Solution {
             int remainder = num%2; //remainder
             num = num/2; // quotient
             binary = remainder + binary;
-
             if (num == 1 | num == 0) binary = num + binary;
         }
         return binary;
