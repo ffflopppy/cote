@@ -6,7 +6,70 @@ import java.util.stream.Collectors;
 
 public class Solution {
 
+    // [7, 0, 8, 2, 8, 3, 1, 5, 7, 6, 2], left
+    public String solution18(int[] numbers, String hand) {
+        String answer = "";
+        int[] lHand = new int[]{3, 0} ;
+        int[] rHand = new int[]{3, 2} ;
 
+        for (int num :numbers) {
+            //{가로,세로}
+            if(num == 0) num = 11;
+            int[] target = new int[]{(num-1)/3,(num-1)%3 } ;
+
+            //        right = 1,4,7;
+            //        left =  3,6,9;
+            if (num == 1 || num ==4 || num == 7 ) {
+                answer += "L";
+                lHand = target;
+            } else if (num == 3 || num ==6 || num == 9) {
+                answer += "R";
+                rHand = target;
+
+            } else {
+
+                // right x,y
+                int leftGap = Math.abs(lHand[0]-target[0]) +Math.abs(lHand[1]-target[1]);
+                int rightGap = Math.abs(rHand[0]-target[0]) +Math.abs(rHand[1]-target[1]);
+
+                if (leftGap > rightGap ) {
+                    answer += "R";
+                    rHand = target;
+
+                } else if (rightGap > leftGap) {
+                    answer += "L";
+                    lHand = target;
+                } else {
+                    if (hand.equals("right")){
+                        answer += "R";
+                        rHand = target;
+                    }else {
+                        answer += "L";
+                        lHand = target;
+                    }
+//                    answer += hand.equals("right")? "R":"L";
+                }
+            }
+        }
+        //  LRLLRRLLLRR
+        //* LRLLRRLLLRR
+        return answer;
+    }
+    public String solution17(int[] food) { //1, 7, 1, 2
+        String answer = "";
+        for (int i = 1; i < food.length; i++) {
+            int repeat = food[i]/2;
+            for (int j = 0; j < repeat ; j++) {
+                answer += i+"";
+            }
+        }
+        answer += "0";
+        for (int j = answer.length()-2; j >= 0 ; j--) {
+            answer += answer.charAt(j);
+
+        }
+        return answer;
+    }
     public int solution16(int k, int m, int[] score) {
         int answer = 0;
         int boxSize= score.length/m;

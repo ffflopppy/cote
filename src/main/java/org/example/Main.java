@@ -3,13 +3,24 @@ package org.example;
 public class Main {
     public static void main(String[] args) {
 
-        Recursive recursive = new Recursive();
-//        recursive.factorial(3);
-//        recursive.greatestCommonDivider(22, 8);
-//        System.out.println(recursive.gcd(22, 8));recursive.gcd(22, 8);
-
+        Chap02 chap02 = new Chap02();
+        SolutionLevel2 solutionLevel2 = new SolutionLevel2();
         Solution solution = new Solution();
-        System.out.println(solution.solution16(4, 3, new int[]{4, 1, 2, 2, 4, 4, 4, 4, 1, 2, 4, 2,4}));
+//        chap02.cloneMultiArr();
+//        chap02.primeNum3();
+//        chap02.primeNumber();
+//        chap02.cloneArr();
+
+//        chap02.factorial(3);
+//        chap02.greatestCommonDivider(22, 8);
+//        System.out.println(chap02.gcd(22, 8));chap02.gcd(22, 8);
+
+
+//        solutionLevel2.solution1("-1 -2 -3 -4");
+
+        System.out.println(solution.solution18(new int[]{7, 0, 8, 2, 8, 3, 1, 5, 7, 6, 2}, "left"));
+//        System.out.println(solution.solution17(new int[]{1, 7, 1, 2}));
+//        System.out.println(solution.solution16(4, 3, new int[]{4, 1, 2, 2, 4, 4, 4, 4, 1, 2, 4, 2,4}));
 //        System.out.println(":::: " + solution.solution15(new int[]{1,1,1,1}, 2));;
 //        System.out.println(":::: " + solution.solution14_2(734));;
 //        System.out.println(":::: " + solution.solution14(734));;
@@ -41,7 +52,7 @@ public class Main {
 //
 //        System.out.println(solution.makeNum2Binary(8));
 //
-//        int[] sol1 = solution.solution1("0000");
+//        int[] sol1 = solution.solution1("0000");ㅓ
 //        for (int sol:sol1) {System.out.print(sol);}
     }
 }
